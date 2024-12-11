@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="container">
+        <div class="loginbox">
+            <div class="heading">Log in to your account</div>
+
+            <div class="login-fields">
+                <div class="email">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Email">
+                </div>
+
+                <div class="password">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password">
+                </div>
+
+                <div class="forgot-password">
+                <a href="#" onclick="forgotPassword()" class="forgot-link">Forgot Password?</a>
+                </div>
+
+                <div class="sub">
+                    <button type="submit" id="login-button">LogIn</button>
+                </div>
+                
+
+                <div class="signup-link">
+                    Don't have an account? <a href="../signup/signup.html">Sign up</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('login-button').addEventListener('click', async (event) => {
+            event.preventDefault();
+
+            // Get the input values
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Validate input fields
+            if (!email || !password) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            try {
+                // Send login request to the backend
+                const response = await fetch('http://localhost:5000/api/auth/login', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ email, password }),
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+                    // Handle successful login, e.g., store token
+                    alert('Login successful!');
+                    localStorage.setItem('username',data.username);
+                    localStorage.setItem('token', data.token);
+                    // Redirect to another page if needed
+                    window.location.href = '../home/home.html'; // Change this to your desired redirect location
+                } else {
+                    // Display error message
+                    alert(data.message || 'Login failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+
+        async function forgotPassword() {
+            const email = document.getElementById('email').value.trim();
+
+            if(!email||email==""){
+                alert("Please enter your email or email");
+                return;
+            }
+
+            
+            localStorage.setItem("email",email);
+            try{
+                const response = await fetch('http://localhost:5000/api/auth/send-reset-token', {
+                    method: 'POST',
+                    headers: {
+
+                        'Content-Type': 'application/json',
+
+                    },
+                    body: JSON.stringify({ email }),
+
+                });
+                const data = await response.json();
+                if(response.ok){
+                    alert(data.message);
+                    window.location.href="../forgotpass/forgotpass.html";
+
+                }
+               
+                else{
+                    alert(data.message);
+                }
+            }
+            catch(err){
+                alert(err)
+            }
+           
+        }
+    </script>
+</body>
+</html>

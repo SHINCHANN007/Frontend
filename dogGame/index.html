@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<header>
+    <div class="logo">
+        <div class="logo-left">THE</div>
+        <div class="logo-right">BLEEP</div>
+    </div>
+    <nav class="main-nav">
+        <ul>
+            <li><a href="../home/home.html">HOME</a></li>
+            <li><a href="../about/about.html">ABOUT</a></li>
+            <li><a href="#">UPCOMING</a></li>
+        </ul>
+        <div class="current-date">
+            <span id="date-display"></span>
+        </div>
+    </nav>
+</header>
+<body>
+    <canvas id="canvas1"></canvas>
+
+    <!-- Game elements -->
+    <img id="player" src="assets/player.png">
+    <img id="layer1" src="assets/layer-1.png">
+    <img id="layer2" src="assets/layer-2.png">
+    <img id="layer3" src="assets/layer-3.png">
+    <img id="layer4" src="assets/layer-4.png">
+    <img id="layer5" src="assets/layer-5.png">
+    <img id="enemy_fly" src="assets/enemy_fly.png">
+    <img id="enemy_plant" src="assets/enemy_plant.png">
+    <img id="enemy_spider" src="assets/enemy_spider_big.png">
+    <img id="fire" src="assets/fire.png">
+
+    <!-- Display for score and username -->
+    <div id="usernameDisplay"></div> 
+    <div id="scoreDisplay"></div>
+    <!-- Element to display the username -->
+
+    <script>
+        const token = localStorage.getItem("token");
+        document.addEventListener('DOMContentLoaded', () => {
+            // Fetch and display the username when the page loads
+            displayUsername();
+        });
+
+        // Function to display the username
+        function displayUsername() {
+            const username = localStorage.getItem('username');
+            const usernameDisplay = document.getElementById('usernameDisplay');
+            if (username) {
+                usernameDisplay.innerHTML = `Username : ${username}`;
+            } else {
+                usernameDisplay.innerHTML = `Not logged in`;
+            }
+        }
+
+        // Listen for the custom event dispatched from main.js
+        window.addEventListener('levelFinished', function(event) {
+            const score = event.detail.score;
+            const scoreDisplay = document.getElementById('scoreDisplay');
+            scoreDisplay.innerHTML = `Score: ${score}`;
+
+            // Call the function to send the score to the database
+            sendScoreToDatabase(score);
+        });
+
+        // Function to send score to the database
+        function sendScoreToDatabase(score) {
+            const username = localStorage.getItem('username'); // Fetching username from Local Storage
+            const apiUrl = 'http://localhost:5000/api/game/high-score'; // Replace with your actual endpoint
+
+            if (!username) {
+                console.error('Username not found. Please log in.');
+                return;
+            }
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include the token in the request
+                },
+                body: JSON.stringify({
+                    username: username,
+                    gameName: 'dogGame',
+                    score: score,
+                }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Score saved:', data);
+            })
+            .catch(error => {
+                console.error('Error saving score:', error);
+            });
+        }
+    </script>
+
+    <script type="module" src="main.js"></script>
+</body>
+</html>

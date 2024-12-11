@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GAMES-profile</title>
+    <link rel="stylesheet" href="account.css">
+    
+</head>
+<body>
+
+    <header>
+        <div class="logo">
+            <div class="logo-left">THE</div>
+            <div class="logo-right">BLEEP</div>
+        </div>
+        <nav class="main-nav">
+            <ul>
+                <li><a href="../home/home.html">HOME</a></li>
+                <li><a href="#">ABOUT</a></li>
+                <li><a href="#">UPCOMING</a></li>
+            </ul>
+            <div class="current-date">
+                <span id="date-display"></span> <!-- This is where the date will be displayed -->
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="profile">
+            <div id="imagePreview" class="cover" onclick="changeImage1()"></div>
+            <input type="file" id="imageInput1" style="display:none;" accept="image/*" />
+            <div id="profile-img" class="pfp" onclick="changeImage2()"></div>
+            <input type="file" id="imageInput2" style="display:none;" accept="image/*" />
+            <div class="profile-details">
+                <div class="info">
+                    <div id="profile-name">ANURAG K</div>
+                    <div id="email">example@gmail.com</div>
+                    <div id="birthday">01-01-2020</div>
+                    <div id="bio">"Always up for a challenge!"</div>
+
+                </div>
+
+                <div class="game">
+                    <h1>SPEEDY-PUP</h1>
+                    <div id="high-score">High Score: 12000</div><BR>
+                    <h1>GORILLA-CLASH</h1>
+                    <div id="high-scoreG">High Score: 12000</div><BR>
+
+                </div>
+               
+            </div>   
+        </div>
+        <div class="friends">
+            <div class="heading">FRIENDS</div>
+            <div class="friends-search">
+                <input type="search" id="friendName"/><button onclick="sendFriendRequest()">Search</button>
+            </div>
+            <div id="friends-list"></div>
+            <div id="friend-request"></div>
+        </div>
+
+        <!-- Popup Container -->
+        <div id="popup-container" class="popup">
+            <div class="popup-content">
+                <span class="close-popup" onclick="closePopup()">&times;</span>
+                <div class="profile-section">
+                    <img id="friend-profile-img" src="./one.jpg" alt="Profile Image">
+                    <h3 id="friend-name" class="fnam">Friend's Name</h3>
+                    <p id="friend-email">email@example.com</p>
+                    <p id="friend-dob">DOB: 01-01-2000</p>
+                </div>
+                <div class="game-stats">
+                    <div class="game">
+                        <h4>Game One</h4>
+                        <p id="game-one-score">Score: 0</p>
+                    </div>
+                    <div class="game">
+                        <h4>Game Two</h4>
+                        <p id="game-two-wins">Wins: 0</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <nav class="secondary-nav">
+        <ul>
+            <li>
+                <a class="play" href="#">PLAY</a>
+                <div class="popup">
+                    <ul>
+                        <li class="gc"><a href="../gorillaGame/index2.html">GORILLA CLASH</a></li>
+                        <li class="sp"><a href="../dogGame/index.html">SPEEDY PUP</a></li>
+                        <li class="su"><a href="../samuriaGame/index (2).html">SAMURAI'S</a></li>
+                    </ul>
+                </div>
+            </li>
+            <li class="p"><a href="#">PROFILE</a></li>
+            <li class="l"><a onclick="logout()"">LOGOUT</a></li>
+        </ul>
+    </nav>
+    <script src="account.js"></script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css"> <!-- Assuming you have your CSS in signup.css -->
+    <title>Sign Up</title>
+</head>
+<body>
+    <div class="container">
+        <div class="signupbox">
+            <div class="heading">Sign up and start having fun!</div>
+
+            <div class="birthdate">
+                <label for="landing-birthday" class="bday">Birthday</label>
+                <div class="selectors">
+                    <div class="month">
+                        <select class="Lselect" id="MonthDropdown" name="birthdayMonth" required>
+                            <option value="" disabled selected>Month</option>
+                            <option value="Jan">January</option>
+                            <option value="Feb">February</option>
+                            <option value="Mar">March</option>
+                            <option value="Apr">April</option>
+                            <option value="May">May</option>
+                            <option value="Jun">June</option>
+                            <option value="Jul">July</option>
+                            <option value="Aug">August</option>
+                            <option value="Sep">September</option>
+                            <option value="Oct">October</option>
+                            <option value="Nov">November</option>
+                            <option value="Dec">December</option>
+                        </select>
+                    </div>
+                    <div class="day">
+                        <select class="Mselect" id="DayDropdown" name="birthdayDay" required>
+                            <option value="" disabled selected>Day</option>
+                            <!-- Days 1 to 31 -->
+                            <script>
+                                for (let i = 1; i <= 31; i++) {
+                                    document.write(`<option value="${String(i).padStart(2, '0')}">${String(i).padStart(2, '0')}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                    <div class="year">
+                        <select class="Rselect" id="YearDropdown" name="birthdayYear" required>
+                            <option value="" disabled selected>Year</option>
+                            <!-- Years 2024 to 2020 -->
+                            <script>
+                                for (let i = 0; i < 5; i++) {
+                                    let year = 2024 - i;
+                                    document.write(`<option value="${year}">${year}</option>`);
+                                }
+                            </script>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ups">
+                <div class="email">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email" placeholder="Email" required>
+                </div>
+
+                <div class="uname">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Username" required>
+                </div>
+
+                <div class="pass">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Password" required>
+                </div>
+
+                <div class="cpass">
+                    <label for="confirmpassword">Confirm Password</label>
+                    <input type="password" id="confirmpassword" name="confirmpassword" placeholder="Confirm password" required>
+                </div>
+
+                <div class="sub">
+                    <button type="submit" id="signup-button">Sign Up</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Function to validate form inputs and send the signup request
+        document.getElementById('signup-button').addEventListener('click', async (event) => {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get form values
+            const email = document.getElementById('email').value.trim();
+            const username = document.getElementById('username').value.trim();
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmpassword').value;
+            const birthdayMonth = document.getElementById('MonthDropdown').value;
+            const birthdayDay = document.getElementById('DayDropdown').value;
+            const birthdayYear = document.getElementById('YearDropdown').value;
+
+            // Validation checks
+            if (!email || !username || !password || !confirmPassword || !birthdayMonth || !birthdayDay || !birthdayYear) {
+                alert('Please fill in all fields.');
+                return;
+            }
+
+            // Password confirmation check
+            if (password !== confirmPassword) {
+                alert('Passwords do not match.');
+                return;
+            }
+
+            // Prepare data to send to the backend
+            const data = {
+                email,
+                username,
+                password,
+                birthday: `${birthdayDay}-${birthdayMonth}-${birthdayYear}`
+            };
+
+            try {
+                // Send the signup request to the backend
+                const response = await fetch('http://localhost:5000/api/auth/signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                // Handle success or error from the backend
+                if (response.ok) {
+                    alert(result.message || 'Sign up successful!');
+                    window.location.href = '../login/login.html'; // Redirect on success
+                } else {
+                    alert(result.message || 'Sign up failed. Please try again.');
+                }
+            } catch (error) {
+                console.error('Error during sign up:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>

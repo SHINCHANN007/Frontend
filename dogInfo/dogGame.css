@@ -1,0 +1,349 @@
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Now+Display:wght@1000&family=Helvetica+Monospaced+W1G:wght@400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;700&display=swap');
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-width: 100vw; /* Limit width to viewport */
+    font-family: Arial, sans-serif; 
+    background-color: #B3B2AE;
+    color: #000;
+    display: flex;
+    flex-direction: column;
+}
+
+/*banana animation*/
+
+
+/* Header styling */
+header {    
+    background-color: #0c0c0c;
+    color: #C1C1BD;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;    
+    height: 14.8vh;
+    padding: 0;
+}
+
+/* Logo styling */
+header .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -2.05vh;
+    padding-left: 3.8rem;
+    padding-right: 5.8rem;
+}
+
+/* Blinking animation */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.logo-left{
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 5.4vw;
+    font-variant-ligatures: none;
+    font-weight: 1000;
+    letter-spacing: 0vw;
+    color: #C1C1BD;
+    transform: scaleY(1.4)scaleX(1.4);
+    transition: color 0.3s; /* Ensure smooth color transition on hover */
+
+}
+.logo-right {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 5.4vw;
+    font-variant-ligatures: none;
+    font-weight: 1000;
+    letter-spacing: 0vw;
+    color: #C1C1BD;
+    transform: scaleY(1.4)scaleX(1.4);
+    transition: color 0.3s; /* Ensure smooth color transition on hover */
+}
+
+.logo-right {
+    margin-right: -1.2vw;
+}
+.logo-left {
+    margin-left: -0.9vw;
+}
+
+/* Apply blinking to both on hover */
+.logo:hover .logo-left{
+    animation: blink 0.05s linear infinite; /* Super fast blinking */
+    
+}
+.logo:hover .logo-right {
+    animation: blink 0.05s linear infinite; /* Super fast blinking */
+    
+}
+
+/* Navigation styling */
+nav {
+    width: 100%;
+    margin-top: -0.6vh;
+    padding-right: 3vw;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between; /* Space out the menu and the date */
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 1vw;
+}
+
+.current-date {
+    font-size: 0.9rem;
+    color: #eeeded57;
+    margin-right: 0.1vw;
+    padding-left: 1vh;
+    word-spacing: 0.2vw;
+}
+
+nav ul li {
+    margin: 0 0.7vw;
+}
+
+nav ul li a {
+    color: #C1C1BD;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    transform: scaleX(1)scaleY(1);
+}
+
+nav ul li a:hover {
+    color: #f0f0f0;
+}
+
+/* Game Info Container */
+
+
+
+
+.game-info-container {
+    position: relative; /* Allows positioning of child elements */
+    background-image: url('./assets/speedypup3.jpg'); /* Replace with the actual path to your image */
+    background-size: cover; /* Ensures the image covers the entire container */
+    background-position: center; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents repeating the image */
+    height: 75.5vh; /* Makes the container take the full viewport height */
+    width: 100%; /* Makes the container take the full viewport width */
+    display: flex;
+    justify-content: flex-end; /* Aligns content to the right */
+    align-items: center; /* Centers content vertically */
+    padding-right: 2rem; /* Adds some padding to the right */
+    color: white; /* Text color to ensure readability on top of the image */
+}
+
+.game-info-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Black overlay with 50% opacity */
+    z-index: 2; /* Ensures overlay is on top of the background image */
+}
+
+
+
+/* Ensure content is above fog and fog2 */
+.game-info-container > * {
+    position: relative; /* Ensures child elements are above the fog and fog2 */
+    z-index: 3;
+}
+
+/* Game Details */
+.game-details {
+    max-width: 400px; /* Adjust width as needed */
+    margin-right: 5vw; /* Adds some space from the right edge */
+    text-align: right; /* Aligns text to the right */
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+}
+
+.gname {
+    display: flex;
+    flex-direction: column;
+    font-size: 2rem; /* Adjust size as needed */
+    margin-bottom: 2vh;
+    font-family: 'Archivo', sans-serif;
+    font-weight: 500;
+    align-items: flex-end;
+}
+
+.gname p {
+    font-size: 1.5rem;
+    text-align: center;
+    height: 3vh;
+    width: 3.5vw;
+    background-color: #555;
+}
+
+.game-genre, .game-players {
+    font-size: 1.2rem; /* Adjust size as needed */
+    margin-bottom: 8px;
+    font-weight: 400;
+    margin-bottom: 2vh;
+}
+
+.gameplay-video {
+    margin-top: 20px;
+}
+
+.gameplay-video video {
+    width: 100%;
+    height: 25vh;
+}
+
+/* Secondary navigation styling */
+.secondary-nav {
+    background-color: #1e1e1e;
+    color: #C1C1BD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    height: 10VH;
+    width: 100%;
+    position: fixed; /* Fixed position to stay at the bottom */
+    bottom: 0; /* Positioned at the bottom of the viewport */
+    left: 0; /* Ensures it spans the full width */
+    z-index: 1000; /* Keeps it above other content */
+}
+
+.secondary-nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.secondary-nav ul li {
+    margin: 0 1.5rem;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    position: relative;
+    
+}
+
+.secondary-nav ul li:first-child a {
+    color: rgb(255, 0, 0, 0.562); /* Set PLAY button to red */
+    font-size: 2rem; /* Make it bigger */
+    font-weight: 1000; /* Make it bold */
+    transform: scaleX(2) scaleY(2);
+    display: inline-block;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    transition: transform 0.3s ease;
+    letter-spacing: 0;
+}
+
+.secondary-nav ul li:first-child a:hover{
+    animation: blink 0.1s linear infinite;
+    transform: scaleX(2.2) scaleY(2.2);
+    color: rgb(255, 0, 0);
+    letter-spacing: 0;
+}
+
+/* Styling for the LOGOUT and PROFILE buttons */
+.secondary-nav ul li:nth-child(2) a,
+.secondary-nav ul li:nth-child(3) a {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: white; /* Set to white */
+    font-size: 1.5rem; /* Slightly smaller */
+    font-weight: bolder; /* Normal weight */
+    transform: scaleX(2) scaleY(2);
+    display: inline-block;
+    padding-top: 0.75vh;
+    letter-spacing: 0;
+}
+
+.secondary-nav ul li:nth-child(2) a:hover,
+.secondary-nav li:nth-child(3) a:hover {
+    animation: blink 0.1s linear infinite;
+    transform: scaleX(2.2) scaleY(2.2);
+    color: rgb(138, 132, 132);
+    letter-spacing: 0;
+}
+
+.secondary-nav ul li .popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: calc(-100% - 5.7vh); ; 
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    height: auto; /* Adjust height based on content */
+    max-height: 40vh; /* Limit the maximum height */
+    max-width: 80vw; /* Limit the maximum width */
+    background-color: #1e1e1e;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 1rem;
+    white-space: normal; /* Allow text to wrap */
+    overflow-y: auto; /* Add scroll if content exceeds max height */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+/* Show the popup when hovering over the menu item */
+.secondary-nav ul li:hover .popup {
+    display: block; /* Make the popup visible on hover */
+}
+
+/* Ensure the popup items are also responsive */
+.secondary-nav ul li .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: auto; /* Adjust based on content */
+    width: 100%; /* Full width of the popup */
+}
+
+.secondary-nav ul li .popup li {    
+    padding: 0.5rem; /* Adjust padding */
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: #C1C1BD; /* Default color */
+    font-weight: 700;
+}
+
+.secondary-nav ul li .popup li:hover {
+    color: #555;
+    cursor: pointer;
+}
+
+/* Adjust popup for very small screens */
+@media (max-width: 600px) {
+    .secondary-nav ul li .popup {
+        max-width: 90vw; /* Make it slightly wider for very small screens */
+        max-height: 60vh; /* Allow more height for small screens */
+    }
+}

@@ -1,0 +1,311 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden; /* Prevent horizontal scrolling */
+    max-width: 100vw; /* Limit width to viewport */
+    font-family: Arial, sans-serif; 
+    background-color: #000000;
+    color: #000;
+}
+
+/*banana animation*/
+
+
+/* Header styling */
+header {    
+    background-color: #0c0c0c;
+    color: #C1C1BD;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;    
+    height: 14.8vh;
+    padding: 0;
+}
+
+/* Logo styling */
+header .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -2.05vh;
+    padding-left: 3.8rem;
+    padding-right: 5.8rem;
+}
+
+/* Blinking animation */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.logo-left{
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 5.4vw;
+    font-variant-ligatures: none;
+    font-weight: 1000;
+    letter-spacing: 0vw;
+    color: #C1C1BD;
+    transform: scaleY(1.4)scaleX(1.4);
+    transition: color 0.3s; /* Ensure smooth color transition on hover */
+
+}
+.logo-right {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 5.4vw;
+    font-variant-ligatures: none;
+    font-weight: 1000;
+    letter-spacing: 0vw;
+    color: #C1C1BD;
+    transform: scaleY(1.4)scaleX(1.4);
+    transition: color 0.3s; /* Ensure smooth color transition on hover */
+}
+
+.logo-right {
+    margin-right: -1.2vw;
+}
+.logo-left {
+    margin-left: -0.9vw;
+}
+
+/* Apply blinking to both on hover */
+.logo:hover .logo-left{
+    animation: blink 0.05s linear infinite; /* Super fast blinking */
+    
+}
+.logo:hover .logo-right {
+    animation: blink 0.05s linear infinite; /* Super fast blinking */
+    
+}
+/* Navigation styling */
+nav {
+    width: 100%;
+    margin-top: -0.6vh;
+    padding-right: 3vw;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between; /* Space out the menu and the date */
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 1vw;
+}
+
+.current-date {
+    font-size: 0.9rem;
+    color: #eeeded57;
+    margin-right: 0.1vw;
+    padding-left: 1vh;
+    word-spacing: 0.2vw;
+}
+
+nav ul li {
+    margin: 0 0.7vw;
+}
+
+nav ul li a {
+    color: #C1C1BD;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    transform: scaleX(1)scaleY(1);
+}
+
+nav ul li a:hover {
+    color: #f0f0f0;
+}
+
+
+/*   main   */
+
+.patch-list {
+    display: flex;
+    flex-direction: row; /* Change direction to row for horizontal layout */
+    align-items: flex-start; /* Align items to the top */
+    padding: 20px;
+    overflow-x: auto; /* Enable horizontal scrolling */
+    white-space: nowrap; /* Prevent wrapping of items */
+    gap: 20px; /* Space between cards */
+}
+
+.patch-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    margin: 20px 0;
+    height: 29vh;
+    min-width: 300px; /* Minimum width to maintain card shape */
+    max-width: 400px; /* Maximum width for consistency */
+    transition: transform 0.3s ease;
+    white-space: normal; /* Allow text to wrap inside cards */
+}
+
+.patch-card:hover {
+    transform: translateY(-5px);
+}
+
+.patch-card h2 {
+    color: #ececec; /* Updated to a lighter shade for contrast */
+    font-size: 1.8em;
+    margin: 0;
+}
+
+.patch-card .date {
+    font-size: 1em;
+    color: #aaa;
+}
+
+.patch-notes {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+}
+
+.patch-notes li {
+    margin: 10px 0;
+    font-size: 1.1em;
+    color: #C1C1BD;
+}
+
+/* Secondary navigation styling */
+.secondary-nav {
+    background-color: #1e1e1e;
+    color: #C1C1BD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    height: 10VH;
+    width: 100%;
+    position: fixed; /* Fixed position to stay at the bottom */
+    bottom: 0; /* Positioned at the bottom of the viewport */
+    left: 0; /* Ensures it spans the full width */
+    z-index: 1000; /* Keeps it above other content */
+}
+
+.secondary-nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.secondary-nav ul li {
+    margin: 0 1.5rem;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    position: relative;
+    
+}
+
+.secondary-nav ul li:first-child a {
+    color: rgb(255, 0, 0, 0.562); /* Set PLAY button to red */
+    font-size: 2rem; /* Make it bigger */
+    font-weight: 1000; /* Make it bold */
+    transform: scaleX(2) scaleY(2);
+    display: inline-block;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    transition: transform 0.3s ease;
+    letter-spacing: 0;
+}
+
+.secondary-nav ul li:first-child a:hover{
+    animation: blink 0.1s linear infinite;
+    transform: scaleX(2.2) scaleY(2.2);
+    color: rgb(255, 0, 0);
+    letter-spacing: 0;
+}
+
+/* Styling for the LOGOUT and PROFILE buttons */
+.secondary-nav ul li:nth-child(2) a,
+.secondary-nav ul li:nth-child(3) a {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: white; /* Set to white */
+    font-size: 1.5rem; /* Slightly smaller */
+    font-weight: bolder; /* Normal weight */
+    transform: scaleX(2) scaleY(2);
+    display: inline-block;
+    padding-top: 0.75vh;
+    letter-spacing: 0;
+}
+
+.secondary-nav ul li:nth-child(2) a:hover,
+.secondary-nav li:nth-child(3) a:hover {
+    animation: blink 0.1s linear infinite;
+    transform: scaleX(2.2) scaleY(2.2);
+    color: rgb(138, 132, 132);
+    letter-spacing: 0;
+}
+
+.secondary-nav ul li .popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: calc(-100% - 5.7vh); ; 
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    height: auto; /* Adjust height based on content */
+    max-height: 40vh; /* Limit the maximum height */
+    max-width: 80vw; /* Limit the maximum width */
+    background-color: #1e1e1e;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-size: 1rem;
+    white-space: normal; /* Allow text to wrap */
+    overflow-y: auto; /* Add scroll if content exceeds max height */
+    z-index: 100; /* Ensure it appears above other elements */
+}
+
+/* Show the popup when hovering over the menu item */
+.secondary-nav ul li:hover .popup {
+    display: block; /* Make the popup visible on hover */
+}
+
+/* Ensure the popup items are also responsive */
+.secondary-nav ul li .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    height: auto; /* Adjust based on content */
+    width: 100%; /* Full width of the popup */
+}
+
+.secondary-nav ul li .popup li {    
+    padding: 0.5rem; /* Adjust padding */
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: #C1C1BD; /* Default color */
+    font-weight: 700;
+}
+
+.secondary-nav ul li .popup li:hover {
+    color: #555;
+    cursor: pointer;
+}
+
+/* Adjust popup for very small screens */
+@media (max-width: 600px) {
+    .secondary-nav ul li .popup {
+        max-width: 90vw; /* Make it slightly wider for very small screens */
+        max-height: 60vh; /* Allow more height for small screens */
+    }
+}

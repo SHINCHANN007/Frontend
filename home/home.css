@@ -1,0 +1,532 @@
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Now+Display:wght@1000&family=Helvetica+Monospaced+W1G:wght@400&display=swap');
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif; 
+    background-color: #B3B2AE;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+/* Header styling */
+header {    
+    background-color: #0c0c0c;
+    color: #C1C1BD;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;    
+    height: 14.8vh;
+    padding: 0;
+}
+
+/* Logo styling */
+header .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -2.05vh;
+    padding-left: 3.8rem;
+    padding-right: 5.8rem;
+}
+
+/* Blinking animation */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.logo-left, .logo-right {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 5.4vw;
+    font-variant-ligatures: none;
+    font-weight: 1000;
+    letter-spacing: 0vw;
+    color: #C1C1BD;
+    transform: scaleY(1.4)scaleX(1.4);
+    transition: color 0.3s; /* Ensure smooth color transition on hover */
+}
+
+.logo-right {
+    margin-right: -1.2vw;
+}
+.logo-left {
+    margin-left: -0.9vw;
+}
+
+/* Apply blinking to both on hover */
+.logo:hover .logo-left,
+.logo:hover .logo-right {
+    animation: blink 0.05s linear infinite; /* Super fast blinking */
+}
+
+/* Navigation styling */
+nav {
+    width: 100%;
+    margin-top: -0.6vh;
+    padding-right: 3vw;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between; /* Space out the menu and the date */
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 1vw;
+}
+
+.current-date {
+    font-size: 0.9rem;
+    color: #C1C1BD;
+    margin-right: 0.1vw;
+    padding-left: 1vh;
+    word-spacing: 0.2vw;
+}
+
+nav ul li {
+    margin: 0 0.7vw;
+}
+
+nav ul li a {
+    color: #C1C1BD;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    display: inline-block;
+    transform: scaleX(1)scaleY(1);
+}
+
+nav ul li a:hover {
+    color: #f0f0f0;
+}
+
+/* Main content */
+main.container {
+    display: flex;
+    height: calc(100vh - 16.6vh - 4rem); /* Adjust height to account for the secondary nav */
+    padding-left: 1vw;
+    /* padding-right: 2vw; */
+    gap: 2vw;
+}
+
+.left-side, .right-side {
+    width: 48%;
+    height: 100%;
+}
+
+.left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border-radius: 10px;
+    width: 50%;
+    
+}
+
+.featured-item {
+    width: 100%;
+    height: 95%;
+    display: flex;
+    justify-content: center; /* Centering .featured-item-content horizontally */
+    align-items: center;    /* Centering .featured-item-content vertically */
+    position: relative;
+    transition: background-color 0.3s;
+    
+    
+}
+
+.featured-item .topleft-f,
+.featured-item .topright-f,
+.featured-item .bottomright-f,
+.featured-item .bottomleft-f {
+    position: absolute;
+    height: 2vh;
+    width: 1vw;
+    border: 5px solid black;
+}
+
+.featured-item .topleft-f {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+}
+
+.featured-item .topright-f {
+    top: 0;
+    right: 0;
+    border-width: 1px 1px 0 0;
+}
+
+.featured-item .bottomright-f {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0;
+}
+
+.featured-item .bottomleft-f {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 1px 1px;
+}
+
+/* Apply blinking animation to the border elements */
+.featured-item:hover .topleft-f,
+.featured-item:hover .topright-f,
+.featured-item:hover .bottomleft-f,
+.featured-item:hover .bottomright-f {
+    animation: blink 0.1s linear infinite;
+}
+
+.featured-item-content {
+    z-index: 10;
+    background-color: #C1C1BD;  
+    width: 97%;
+    height: 97%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Keep text at the top */
+    align-items: center;         /* Center align the content horizontally */
+    padding: 2vh;
+    box-sizing: border-box;
+    color: #111;
+    transition: color 0.3s, background-color 0.3s;
+    position: relative; /* Make sure child elements can be absolutely positioned */
+    
+}
+
+.featured-item-content p {
+    font-family: "Helvetica Monospaced W1G", "Courier New", Courier, monospace;
+    font-size: 1.6vh;
+    color: #555;
+    padding: 8px;
+}
+
+.featured-item-content h2 {
+    font-family: HelveticaNowDisplay, -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 6.5vh;
+    font-variant-ligatures: none;
+    font-weight: 900;
+    letter-spacing: -1.6px;
+    line-height: 43.2px;
+}
+
+.featuredimage {
+    margin-top: auto; /* This will help center vertically */
+    margin-bottom: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 60%; /* Adjust the height automatically */
+    transition: filter 0.3s;
+}
+
+.featuredimage img {
+    max-width: 100%;
+    max-height: 100%;
+    /*object-fit: contain;  Prevent stretching */
+    filter: grayscale(100%) brightness(0.8); /* Grayscale by default */
+    border: 1px solid black;
+}
+
+.featured-item:hover .featuredimage img {
+    filter: grayscale(0%) brightness(1.2); /* Remove grayscale on hover */
+}
+
+.featured-item:hover .featured-item-content {
+    color: #C1C1BD;
+    background-color: #000;
+}
+
+.right-side {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 2vh;
+    padding: 2vh;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+.grid-item-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.grid-item {
+    width: 100%;
+    height: 98%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+}
+
+.grid-item .topleft-g,
+.grid-item .topright-g,
+.grid-item .bottomright-g,
+.grid-item .bottomleft-g {
+    position: absolute;
+    height: 2vh;
+    width: 1vw;
+    border: 5px solid black;
+}
+
+.grid-item .topleft-g {
+    top: 0;
+    left: 0;
+    border-width: 1px 0 0 1px;
+}
+
+.grid-item .topright-g {
+    top: 0;
+    right: 0;
+    border-width: 1px 1px 0 0;
+}
+
+.grid-item .bottomright-g {
+    bottom: 0;
+    right: 0;
+    border-width: 0 1px 1px 0;
+}
+
+.grid-item .bottomleft-g {
+    bottom: 0;
+    left: 0;
+    border-width: 0 0 1px 1px;
+}
+
+/* Apply blinking animation to the grid-item border elements */
+.grid-item:hover .topleft-g,
+.grid-item:hover .topright-g,
+.grid-item:hover .bottomleft-g,
+.grid-item:hover .bottomright-g {
+    animation: blink 0.1s linear infinite;
+}
+
+.grid-item-content {
+    background-color: #C1C1BD;
+    width: 94%;
+    height: 94%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align content to the top */
+    align-items: flex-start;     /* Align content to the left */
+    padding: 2vh;
+    box-sizing: border-box;
+    color: #111;
+    transition: color 0.3s, background-color 0.3s;
+}
+
+.grid-item h3 {
+    font-family: HelveticaNowDisplay, -apple-system, blinkmacsystemfont, Segoe UI, roboto, Helvetica Neue, arial, sans-serif;
+    font-size: 2.2vh;
+    margin-bottom: 1vh;
+}
+
+.grid-item p {
+    font-family: "Helvetica Monospaced W1G", "Courier New", Courier, monospace;
+    font-size: 1.6vh;
+    color: #555;
+}
+
+.grid-item:hover .grid-item-content {
+    color: #C1C1BD;
+    background-color: #000;
+    filter: grayscale(0%)brightness(0.8);
+}
+
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* Ensure the image is positioned relative to grid-item */
+    box-sizing: border-box;
+    transition: background-color 0.3s;
+}
+
+.grid-item-content {
+    width: 95%;
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2vh;
+    box-sizing: border-box;
+    color: #111;
+    transition: color 0.3s, background-color 0.3s;
+    position: relative; /* Ensure the image is positioned relative to grid-item-content */
+}
+
+.grid-item-image {
+    position: absolute;
+    bottom: 2%; /* Adjust spacing from the bottom */
+    right: 2%;  /* Adjust spacing from the right */
+    width: 50%;  /* Half the width of grid-item-content */
+    height: 60%; /* Half the height of grid-item-content */
+    object-fit: cover; /* Ensure image covers its area */
+    transition: filter 0.3s; /* Smooth transition for filter on hover */
+    filter: grayscale(100%)brightness(1.2); /* Lighten the image by default */
+}
+
+.grid-item:hover .grid-item-image {
+    filter: grayscale(0%)brightness(0.8); /* Darken the image on hover */
+}
+
+/* Secondary navigation styling */
+.secondary-nav {
+    background-color: #1e1e1e;
+    color: #C1C1BD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    height: 10vh; /* Use 'vh' to keep the height responsive */
+    width: 100%;
+    position: fixed; /* Fixed position to stay at the bottom */
+    bottom: 0;
+    left: 0;
+    z-index: 1000; /* Keeps it above other content */
+}
+
+.secondary-nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.secondary-nav ul li {
+    margin: 0 1.5rem;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    position: relative;
+}
+
+/* Styling for the 'PLAY' button */
+.secondary-nav .playing .play {
+    color: rgba(255, 0, 0, 0.562); /* Red color */
+    font-size: 2rem; /* Make it bigger */
+    font-weight: 1000; /* Bold font */
+    transform: scale(2); /* Increase size */
+    display: inline-block;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    transition: transform 0.3s ease;
+}
+
+.secondary-nav .playing .play:hover {
+    animation: blink 0.1s linear infinite;
+    transform: scale(2.2); /* Slightly larger on hover */
+    color: rgb(255, 0, 0); /* Stronger red on hover */
+    cursor: pointer;
+}
+
+/* Styling for the LOGOUT and PROFILE buttons */
+.secondary-nav .profile a,
+.secondary-nav .logout a {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: white; /* Set to white */
+    font-size: 1.5rem; /* Slightly smaller than PLAY */
+    font-weight: bold;
+    transform: scale(2);
+    display: inline-block;
+    padding-top: 0.75vh;
+    cursor: pointer;
+}
+
+.secondary-nav .profile a:hover,
+.secondary-nav .logout a:hover {
+    animation: blink 0.1s linear infinite;
+    transform: scale(2.2); /* Slightly larger on hover */
+    color: rgb(138, 132, 132); /* Gray color on hover */
+}
+
+/* Popup styling */
+.secondary-nav ul li .popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: calc(100% - 16.9vh); /* Position below the menu item */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    background-color: #1e1e1e;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 2vw 4vh 2vw; /* Added horizontal padding for small screens */
+    font-size: 1rem;
+    white-space: normal; /* Allow text to wrap */
+    overflow-y: auto; /* Add scroll if content exceeds */
+    z-index: 100;
+}
+
+/* Show the popup on hover */
+.secondary-nav ul li:hover .popup {
+    display: block;
+}
+
+/* Ensure popup items are responsive */
+.secondary-nav ul li .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 2vh 0 0 0;
+    height: auto;
+    width: 100%;
+}
+
+/* Links inside the popup */
+.secondary-nav ul li .popup li .gc a, 
+.secondary-nav ul li .popup li .sp a {
+    padding: 0.5rem;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: #C1C1BD;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect for popup items */
+.secondary-nav ul li .popup li:hover .gc a,
+.secondary-nav ul li .popup li:hover .sp a {
+    color: #555;
+    cursor: pointer;
+}
+
+/* Small screens adjustments */
+@media (max-width: 600px) {
+    .secondary-nav ul li .popup {
+        max-width: 90vw; /* Limit width for small screens */
+        max-height: 60vh; /* Limit height */
+    }
+
+    /* Ensure the buttons maintain readability */
+    .secondary-nav .playing .play, 
+    .secondary-nav .profile a, 
+    .secondary-nav .logout a {
+        font-size: 1.8rem; /* Adjust font size slightly for small screens */
+        transform: scale(1.8); /* Adjust size scaling */
+    }
+}
+

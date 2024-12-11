@@ -1,0 +1,115 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212; /* Darker background */
+}
+
+.signupbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #1e1e1e; /* Dark gray for contrast */
+    width: 450px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Soft shadow for depth */
+    font-family: 'Poppins', sans-serif; /* Bold font family */
+}
+
+.heading {
+    text-align: center;
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 700; /* Bold font weight */
+    text-transform: uppercase;
+    color: #ffffff; /* White text */
+}
+
+.birthdate {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; 
+    color: #b3b3b3; /* Light gray text */
+}
+
+.birthdate label {
+    font-size: 0.95rem; /* Slightly larger */
+    font-weight: 700; /* Bold font weight */
+}
+
+.selectors {
+    display: flex;
+}
+
+.selectors div {
+    display: flex;
+    flex: 1;
+}
+
+.selectors div select {
+    width: 100%;
+    height: 40px;
+    padding: 10px;
+    background-color: #333333; /* Darker gray for inputs */
+    color: #ffffff; /* White text in inputs */
+    border: 0.1px solid #444444; /* Darker border */
+    font-weight: 700; /* Bold font weight */
+    font-family: 'Poppins', sans-serif; /* Consistent bold font */
+}
+
+.ups {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #b3b3b3; /* Light gray text */
+}
+
+.ups div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.ups div label {
+    font-size: 0.95rem; /* Slightly larger */
+    font-weight: 700; /* Bold font weight */
+}
+
+.ups div input {
+    height: 38px;
+    width: 95%;
+    padding: 10px;
+    background-color: #333333; /* Darker gray for inputs */
+    color: #ffffff; /* White text in inputs */
+    border-radius: 10px;
+    border: 0.2px solid #444444; /* Darker border */
+    font-weight: 700; /* Bold font weight */
+    font-family: 'Poppins', sans-serif; /* Consistent bold font */
+}
+
+.sub button {
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    background-color: #444444; /* Dark gray for button */
+    color: #ffffff; /* White text */
+    border-radius: 10px;
+    border: 0.1px solid #555555; /* Slightly lighter border */
+    font-weight: 700; /* Bold font weight */
+    font-family: 'Poppins', sans-serif; /* Consistent bold font */
+    transition: background-color 0.3s ease;
+}
+
+.sub button:hover {
+    background-color: #555555; /* Slightly lighter on hover */
+    color: #000000; /* Black text on hover */
+    font-weight: 700; /* Bold font weight */
+}
