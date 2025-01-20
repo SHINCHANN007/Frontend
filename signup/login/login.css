@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #121212; /* Darker background */
+}
+
+.loginbox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #1e1e1e; /* Dark gray for contrast */
+    width: 450px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8); /* Soft shadow for depth */
+    font-family: 'Poppins', sans-serif; /* Bold font family */
+}
+
+.heading {
+    text-align: center;
+    font-size: 1.5rem; /* Increased font size */
+    font-weight: 700; /* Bold font weight */
+    text-transform: uppercase;
+    color: #ffffff; /* White text */
+}
+
+.login-fields {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #b3b3b3; /* Light gray text */
+}
+
+.login-fields div {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.login-fields div label {
+    font-size: 0.95rem; /* Slightly larger */
+    font-weight: 700; /* Bold font weight */
+}
+
+.login-fields div input {
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    background-color: #333333; /* Darker gray for inputs */
+    color: #ffffff; /* White text in inputs */
+    border-radius: 10px;
+    border: 0.2px solid #444444; /* Darker border */
+    font-weight: 700; /* Bold font weight */
+    font-family: 'Poppins', sans-serif; /* Consistent bold font */
+}
+
+.forgot-password {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.forgot-password .forgot-link {
+    color: #b3b3b3;
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 700; /* Bold font weight */
+    transition: color 0.3s ease;
+}
+
+.forgot-password .forgot-link:hover {
+    color: #ffffff; /* White text on hover */
+}
+
+.sub button {
+    height: 40px;
+    width: 100%;
+    padding: 10px;
+    background-color: #444444; /* Dark gray for button */
+    color: #ffffff; /* White text */
+    border-radius: 10px;
+    border: 0.1px solid #555555; /* Slightly lighter border */
+    font-weight: 700; /* Bold font weight */
+    font-family: 'Poppins', sans-serif; /* Consistent bold font */
+    transition: background-color 0.3s ease;
+}
+
+.sub button:hover {
+    background-color: #555555; /* Slightly lighter on hover */
+    color: #000000; /* Black text on hover */
+    font-weight: 700; /* Bold font weight */
+}
+
+.signup-link {
+    text-align: center;
+    font-size: 0.85rem;
+    color: #b3b3b3;
+
+}
+.forgot{
+    text-align: center;
+    font-size: 0.80rem;
+    padding: 0;
+    margin-bottom: -0.9vh;
+}
+
+.signup-link a{
+    color: #ffffff; /* White text for link */
+    text-decoration: none;
+    font-weight: 700; /* Bold font weight */
+}
+
+.forgot a {
+    color: #1e61a0; /* White text for link */
+    text-decoration: none;
+    font-weight: 700; /* Bold font weight */
+}
+
+.signup-link a:hover,
+.forgot a:hover {
+    text-decoration: underline;
+}
+
+/* Removed #login-button .a as it doesn't match any structure in the HTML */
