@@ -88,8 +88,8 @@
     </div>
 
     <script>
-        // Function to validate form inputs and send the signup request
-        document.getElementById('signup-button').addEventListener('click', async (event) => {
+        // Function to handle the sign-up process
+        document.getElementById('signup-button').addEventListener('click', (event) => {
             event.preventDefault(); // Prevent the default form submission
 
             // Get form values
@@ -113,37 +113,13 @@
                 return;
             }
 
-            // Prepare data to send to the backend
-            const data = {
-                email,
-                username,
-                password,
-                birthday: `${birthdayDay}-${birthdayMonth}-${birthdayYear}`
-            };
+            // Here we would normally send the data to the backend.
+            // Since we're redirecting, we will just log the data to console (you can remove this part later).
+            console.log({ email, username, password, birthday: `${birthdayDay}-${birthdayMonth}-${birthdayYear}` });
 
-            try {
-                // Send the signup request to the backend
-                const response = await fetch('https://backend-ms9p.onrender.com/api/auth/signup', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data),
-                });
-
-                const result = await response.json();
-
-                // Handle success or error from the backend
-                if (response.ok) {
-                    alert(result.message || 'Sign up successful!');
-                    window.location.href = '../login/login.html'; // Redirect on success
-                } else {
-                    alert(result.message || 'Sign up failed. Please try again.');
-                }
-            } catch (error) {
-                console.error('Error during sign up:', error);
-                alert('An error occurred. Please try again later.');
-            }
+            // Redirect to the home page after successful sign-up
+            alert('Sign up successful!');
+            window.location.href = '../home/home.html'; // Redirect to home.html
         });
     </script>
 </body>
