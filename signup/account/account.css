@@ -1,0 +1,672 @@
+/* Import fonts from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Helvetica+Now+Display:wght@1000&family=Helvetica+Monospaced+W1G:wght@400&display=swap');
+
+/* Reset styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: Arial, sans-serif;
+    background-color: #B3B2AE;
+    color: #000000;
+    overflow-x: hidden;
+}
+
+/* Header styling */
+header {    
+    background-color: #0c0c0c;
+    color: #C1C1BD;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;    
+    height: 14.8vh;
+    padding: 0;
+}
+
+/* Logo styling */
+header .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: -2.05vh;
+    padding-left: 3.8rem;
+    padding-right: 5.8rem;
+}
+
+/* Blinking animation */
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+.logo-left, .logo-right {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    font-size: 5.4vw;
+    font-variant-ligatures: none;
+    font-weight: 1000;
+    letter-spacing: 0vw;
+    color: #C1C1BD;
+    transform: scaleY(1.4)scaleX(1.4);
+    transition: color 0.3s; /* Ensure smooth color transition on hover */
+}
+
+.logo-right {
+    margin-right: -1.2vw;
+}
+.logo-left {
+    margin-left: -0.9vw;
+}
+
+/* Apply blinking to both on hover */
+.logo:hover .logo-left,
+.logo:hover .logo-right {
+    animation: blink 0.05s linear infinite; /* Super fast blinking */
+}
+
+/* Navigation styling */
+nav {
+    width: 100%;
+    margin-top: -0.6vh;
+    padding-right: 3vw;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul {
+    display: flex;
+    justify-content: flex-start;
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 1vw;
+}
+
+.current-date {
+    font-size: 0.9rem;
+    color: #C1C1BD;
+    margin-right: 0.1vw;
+    padding-left: 1vh;
+    word-spacing: 0.2vw;
+}
+
+nav ul li {
+    margin: 0 0.7vw;
+}
+
+nav ul li a {
+    color: #C1C1BD;
+    text-decoration: none;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+    display: inline-block;
+}
+
+nav ul li a:hover {
+    color: #f0f0f0;
+}
+
+
+.container{
+    display: flex;
+    padding: 30px;
+    gap: 20px;
+}
+
+.profile{
+    position: relative;
+    width: 70vw;
+    height: 700px;
+    display: flex;
+    flex-direction: column;
+    /* gap: 20px; */
+}
+
+.profile .cover{
+    height: 50%;
+    width: 100%;
+    background-color: #000000;
+    
+    /* border-radius: 30px; */
+    cursor: pointer;
+    background-image: url('../home/assets/bggori2.jpg'); /* Default cover image */
+    background-size: cover;
+    background-position: center;
+    transition: border-color 0.3s ease;
+    border: 3px solid black;
+}
+.profile .cover:hover {
+    background-color: #000000c5; /* Hover effect with custom color */
+    border-color: #000000c5;
+}
+
+.profile #profile-img{
+    position: absolute;
+    top: 55%;
+    left: 13%;
+    transform: translate(-50%, -50%);
+    background-color: #1e1e1e;
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    cursor: pointer;
+    background-image: url('../dogGame/assets/enemy_fly.png'); /* Default cover image */
+    background-size: cover;
+    background-position: center;
+    transition: border-color 0.3s ease;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+
+.profile-details {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem; /* Space between items */
+    padding: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    padding-left: 15vw;
+}
+
+.profile-details .info {
+    display: flex;
+    flex-direction: column;
+    height: fit-content;
+    width: 30%;
+    border: 2px solid black;
+    padding: 1rem; /* Add padding for better spacing inside the border */
+    border-radius: 8px; /* Rounded corners for a modern look */
+    background-color: #f9f9f9; /* Light background color for better contrast */
+}
+
+.profile-details .info div {
+    margin-bottom: 0.5rem; /* Space between each info item */
+    font-size: 1rem; /* Standard font size for readability */
+    color: #333; /* Dark gray text for better contrast */
+}
+
+.profile-details .info #profile-name {
+    font-size: 1.5rem; /* Larger font size for profile name */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #000; /* Black text for profile name */
+}
+
+.profile-details .info #email,
+.profile-details .info #birthday,
+.profile-details .info #bio {
+    font-size: 1rem; /* Standard font size for other info */
+}
+
+.profile-details .game {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    padding: 1rem;
+}
+
+.profile-details .game h1 {
+    font-size: 1.25rem; /* Slightly larger font size for headings */
+    margin: 0.5rem 0; /* Space around the headings */
+    color: #555; /* Medium gray color for game titles */
+}
+
+.profile-details .game #high-score,#high-scoreG {
+    font-size: 1.5rem; /* Larger font size for high score */
+    font-weight: bold; /* Bold text for emphasis */
+    color: #d44; /* Distinct color for high score */
+    margin-bottom: 1rem; /* Space below high score */
+}
+
+/* Optional: Add some responsiveness */
+@media (max-width: 768px) {
+    .profile-details {
+        flex-direction: column;
+        padding-left: 0;
+    }
+
+    .profile-details .info,
+    .profile-details .game {
+        width: 100%;
+    }
+}
+
+#profile-name {
+    font-size: 2rem;
+    font-weight: bold;
+    color: black;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+}
+
+#email,
+#birthday{
+    font-style: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;;
+    font-weight: bold;
+    padding-top: 1vh;
+        
+}
+
+
+#high-score,
+#level,
+#achievements,
+#games-played,
+#rank,
+#bio {
+    font-size: 1.4rem;
+    font-weight: 1000;
+    color: whitesmoke;
+    font-family: Helvetica, Arial, sans-serif;
+}
+
+#bio {
+    font-style: italic;
+    font-weight: 600;
+    color: lightgray;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .profile-name {
+        font-size: 1.6rem;
+    }
+
+    .high-score,
+    .level,
+    .achievements,
+    .games-played,
+    .rank,
+    .bio {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-name {
+        font-size: 1.4rem;
+    }
+
+    .high-score,
+    .level,
+    .achievements,
+    .games-played,
+    .rank,
+    .bio {
+        font-size: 1rem;
+    }
+}
+
+.friends{
+    width: 30vw;
+    
+    height: 65vh;
+    background-color: #000000;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border-radius: 30px; */
+}
+
+.friends .heading{
+    height: 10%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 860;
+    color: #C1C1BD;
+}
+
+.friends .friends-search{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    gap: 10px;
+}
+.friends .friends-search input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.3s ease-in-out;
+}
+
+.friends .friends-search input:focus {
+    border-color: #000000; /* Custom color */
+}
+
+.friends .friends-search button {
+    padding: 10px 20px;
+    background-color: #6e7573; /* Custom color */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.friends .friends-search button:hover {
+    background-color: #313333; /* Darker shade of the custom color */
+}
+
+#friends-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+#friends-list li {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: #918d8d;
+    font-weight: 800;
+}
+
+#friends-list li:last-child {
+    border-bottom: none; /* Remove bottom border for the last item */
+}
+
+#friends-list li:hover {
+    background-color: #e9ecef;
+    cursor: pointer;
+}
+
+/* Secondary navigation styling */
+.secondary-nav {
+    background-color: #1e1e1e;
+    color: #C1C1BD;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    height: 10VH;
+    width: 100%;
+    position: fixed; /* Fixed position to stay at the bottom */
+    bottom: 0; /* Positioned at the bottom of the viewport */
+    left: 0; /* Ensures it spans the full width */
+    z-index: 1000; /* Keeps it above other content */
+}
+
+.secondary-nav ul {
+    display: flex;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.secondary-nav ul li {
+    margin: 0 1.5rem;
+    padding-left: 3vw;
+    padding-right: 3vw;
+    position: relative;
+    
+}
+
+.secondary-nav .play {
+    color: rgba(255, 0, 0, 0.562); /* Set PLAY button to red */
+    font-size: 2rem; /* Make it bigger */
+    font-weight: 1000; /* Make it bold */
+    transform: scaleX(2) scaleY(2);
+    display: inline-block;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    transition: transform 0.3s ease;
+    letter-spacing: 0;
+}
+
+.secondary-nav .play:hover{
+    animation: blink 0.1s linear infinite;
+    transform: scaleX(2.2) scaleY(2.2);
+    color: rgb(255, 0, 0);
+    letter-spacing: 0;
+}
+
+/* Styling for the LOGOUT and PROFILE buttons */
+.secondary-nav .p a,
+.secondary-nav .l a {
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: white; /* Set to white */
+    font-size: 1.5rem; /* Slightly smaller */
+    font-weight: bolder; /* Normal weight */
+    transform: scaleX(2) scaleY(2);
+    display: inline-block;
+    padding-top: 0.75vh;
+    letter-spacing: 0;
+    cursor: pointer;
+}
+
+.secondary-nav .p a:hover,
+.secondary-nav .l a:hover {
+    animation: blink 0.1s linear infinite;
+    transform: scaleX(2.2) scaleY(2.2);
+    color: rgb(138, 132, 132);
+    letter-spacing: 0;
+    cursor: pointer;
+}
+
+.secondary-nav ul li .popup {
+    display: none; /* Hidden by default */
+    position: absolute;
+    top: calc(100% - 16.9vh); /* Position below the menu item */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%);
+    background-color: #1e1e1e;
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 2vw 4vh 2vw; /* Added horizontal padding for small screens */
+    font-size: 1rem;
+    white-space: normal; /* Allow text to wrap */
+    overflow-y: auto; /* Add scroll if content exceeds */
+    z-index: 100;
+    width: fit-content;
+}
+
+/* Show the popup on hover */
+.secondary-nav ul li:hover .popup {
+    display: block;
+}
+
+/* Ensure popup items are responsive */
+.secondary-nav ul li .popup ul {
+    list-style: none;
+    padding: 0;
+    margin: 2vh 0 0 0;
+    height: auto;
+    width: 100%;
+}
+
+/* Links inside the popup */
+.secondary-nav ul li .popup li .gc a, 
+.secondary-nav ul li .popup li .sp a {
+    padding: 0.5rem;
+    font-family: 'HelveticaNowDisplay', -apple-system, blinkmacsystemfont, "Segoe UI", roboto, "Helvetica Neue", arial, sans-serif;
+    color: #C1C1BD;
+    font-weight: 700;
+    text-decoration: none;
+    display: block;
+}
+
+/* Hover effect for popup items */
+.secondary-nav ul li .popup li:hover .gc a,
+.secondary-nav ul li .popup li:hover .sp a {
+    font-size: large;
+    color: #555;
+    cursor: pointer;
+}
+
+/* Small screens adjustments */
+@media (max-width: 600px) {
+    .secondary-nav ul li .popup {
+        max-width: 90vw; /* Limit width for small screens */
+        max-height: 60vh; /* Limit height */
+    }
+
+    /* Ensure the buttons maintain readability */
+    .secondary-nav .playing .play, 
+    .secondary-nav .profile a, 
+    .secondary-nav .logout a {
+        font-size: 1.8rem; /* Adjust font size slightly for small screens */
+        transform: scale(1.8); /* Adjust size scaling */
+    }
+}
+
+
+#friend-request {
+    width: 100%;
+    max-width: fit-content;
+    margin: 20px auto;
+    border-collapse: collapse; /* Ensure the table elements collapse borders */
+    border: 1px solid #615e5e;
+    background-color: #6e6a6a;
+    border-radius: 10px; /* Rounded corners */
+    
+}
+
+
+#friend-request td {
+    padding: 10px;
+    text-align: left;
+    font-size: 1rem;
+}
+
+#friend-request td:first-child {
+    font-weight: bold; /* Make sender usernames bold */
+}
+
+#friend-request button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    font-size: 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#friend-request button:hover {
+    opacity: 0.9;
+}
+
+#friend-request button:first-of-type {
+    background-color: #28a745; /* Accept button: Green */
+}
+
+#friend-request button:first-of-type:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+#friend-request button:last-of-type {
+    background-color: #dc3545; /* Reject button: Red */
+}
+
+#friend-request button:last-of-type:hover {
+    background-color: #c82333; /* Darker red on hover */
+}
+
+/* Popup Container Styling */
+.popup {
+    display: none; /* Initially hidden */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Darker semi-transparent background */
+    display: flex; /* Center content */
+    justify-content: center; /* Horizontally center */
+    align-items: center; /* Vertically center */
+    z-index: 1000; /* Ensure it's on top */
+}
+
+.popup-content {
+    background-color: #fff;
+    border-radius: 20px; /* Slightly increased border radius */
+    padding: 30px; /* Increased padding for more spacing */
+    width: 500px; /* Set desired width */
+    max-width: 90%; /* More responsive design */
+    text-align: center;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2); /* Increased shadow for depth */
+    position: relative;
+    margin-top: 15%;
+    margin-left: 35%;
+}
+
+.close-popup {
+    position: absolute;
+    top: 15px; /* Adjusted positioning */
+    right: 20px; /* Adjusted positioning */
+    font-size: 30px; /* Larger close icon */
+    cursor: pointer;
+}
+
+.profile-section {
+    margin-bottom: 25px; /* More space between sections */
+}
+
+#friend-profile-img {
+    width: 150px; /* Bigger profile image */
+    height: 150px; /* Same size for height */
+    border-radius: 50%; /* Circle shape */
+    margin-bottom: 20px; /* More space below image */
+    object-fit: cover; /* Maintain aspect ratio */
+    border: 3px solid #4a90e2; /* Blue border for emphasis */
+    background-color: #eaeaea; /* Background color in case image doesn't load */
+}
+
+.fnam {
+    font-size: 1.7rem; /* Slightly larger font size */
+    font-weight: 600; /* Bold text */
+    margin-bottom: 15px;
+}
+
+#friend-email,
+#friend-dob {
+    font-size: 1rem; /* Slightly larger text */
+    color: #555; /* Slightly darker text color */
+    margin-bottom: 5px;
+}
+
+.game-stats {
+    display: flex;
+    justify-content: space-around; /* Spacing adjusted for better layout */
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+}
+
+.game {
+    width: 45%; /* Adjust width for better spacing */
+    background-color: #fafafa; /* Slightly lighter background */
+    padding: 15px; /* More padding */
+    border-radius: 15px; /* Increased border radius */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* More shadow for depth */
+    margin-bottom: 20px; /* Space between game cards */
+}
+
+.game h4 {
+    font-size: 1.2rem; /* Larger game title */
+    margin-bottom: 10px; /* Space below title */
+    color: #333; /* Darker title color */
+}
+
+.game p {
+    font-size: 1.1rem; /* Larger score text */
+    margin: 0;
+    color: #4a90e2; /* Blue text for scores */
+}
