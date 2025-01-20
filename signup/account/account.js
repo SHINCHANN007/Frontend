@@ -47,7 +47,7 @@ function changeImage1() {
                 const token = localStorage.getItem('token'); // Ensure this key matches where you store the token
 
                 // Send the image and username to the server using fetch
-                const response = await fetch('http://localhost:5000/api/auth/upload-photo', {
+                const response = await fetch('https://backend-ms9p.onrender.com/api/auth/upload-photo', {
                     method: 'POST',
                     headers: {
                         'Authorization': token ? `Bearer ${token}` : '' // Include token if available
@@ -106,7 +106,7 @@ function changeImage2() {
                 const token = localStorage.getItem('token'); // Ensure this key matches where you store the token
 
                 // Send the image and username to the server using fetch
-                const response = await fetch('http://localhost:5000/api/auth/upload-pfp', {
+                const response = await fetch('https://backend-ms9p.onrender.com/api/auth/upload-pfp', {
                     method: 'POST',
                     headers: {
                         'Authorization': token ? `Bearer ${token}` : '' // Include token if available
@@ -134,7 +134,7 @@ async function sendFriendRequest() {
     const receiverUsername = document.getElementById('friendName').value; // Assuming 'friendName' is the ID of an input field
   
     try {
-      const response = await fetch('http://localhost:5000/api/friend-requests/send', {
+      const response = await fetch('https://backend-ms9p.onrender.com/api/friend-requests/send', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -163,7 +163,7 @@ async function loadFriendRequests() {
     const token = localStorage.getItem('token');
     const usen = localStorage.getItem('username'); // Retrieve username from local storage
 
-    const apiUrl = `http://localhost:5000/api/friend-requests/requests/${usen}`; // Include username in the URL
+    const apiUrl = `https://backend-ms9p.onrender.com/api/friend-requests/requests/${usen}`; // Include username in the URL
 
     try {
         const response = await fetch(apiUrl, {
@@ -209,7 +209,7 @@ async function loadFriendRequests() {
 //accept req
 async function acceptFriendRequest(senderUsername, receiverUsername) {
     const token = localStorage.getItem('token');
-    const apiUrl = `http://localhost:5000/api/friend-requests/accept/${senderUsername}/${receiverUsername}`;
+    const apiUrl = `https://backend-ms9p.onrender.com/api/friend-requests/accept/${senderUsername}/${receiverUsername}`;
 
     try {
         const response = await fetch(apiUrl, {
@@ -237,7 +237,7 @@ async function acceptFriendRequest(senderUsername, receiverUsername) {
 //reject req
 async function rejectFriendRequest(senderUsername, receiverUsername) {
     const token = localStorage.getItem('token');
-    const apiUrl = `http://localhost:5000/api/friend-requests/reject/${senderUsername}/${receiverUsername}`;
+    const apiUrl = `https://backend-ms9p.onrender.com/api/friend-requests/reject/${senderUsername}/${receiverUsername}`;
 
     try {
         const response = await fetch(apiUrl, {
@@ -264,7 +264,7 @@ async function rejectFriendRequest(senderUsername, receiverUsername) {
 /**display friends  */
 async function displayFriends() {
     const username = localStorage.getItem('username'); // Ensure username is fetched inside the function or globally
-    const res = await fetch(`http://localhost:5000/api/friend-requests/show/${username}`);
+    const res = await fetch(`https://backend-ms9p.onrender.com/api/friend-requests/show/${username}`);
     const friends = await res.json();
     console.log(friends);
 
@@ -285,7 +285,7 @@ async function displayProfile(username) {
     try {
 
         //HIGHSCORE dog GETTER
-        const response = await fetch('http://localhost:5000/api/game/top-scores', {
+        const response = await fetch('https://backend-ms9p.onrender.com/api/game/top-scores', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -318,7 +318,7 @@ async function displayProfile(username) {
         }
 
         // goRilla score
-        const responseG = await fetch('http://localhost:5000/api/game/top-scores', {
+        const responseG = await fetch('https://backend-ms9p.onrender.com/api/game/top-scores', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -344,7 +344,7 @@ async function displayProfile(username) {
         ///end
 
         //EMAIL AND BIRTHDAY GETTER
-        const response2 = await fetch('http://localhost:5000/api/auth/userdetails', {
+        const response2 = await fetch('https://backend-ms9p.onrender.com/api/auth/userdetails', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -365,10 +365,10 @@ async function displayProfile(username) {
                 console.error('Birthday not found in response data');
             }
             if(data2.profileImage !== undefined){
-                document.querySelector('.profile .cover').style.backgroundImage = `url('http://localhost:5000/uploads/${data2.profileImage}')`;
+                document.querySelector('.profile .cover').style.backgroundImage = `url('https://backend-ms9p.onrender.com/uploads/${data2.profileImage}')`;
             }
             if(data2.coverImage !== undefined){
-                document.querySelector('.profile .pfp').style.backgroundImage = `url('http://localhost:5000/uploads/${data2.coverImage}')`;
+                document.querySelector('.profile .pfp').style.backgroundImage = `url('https://backend-ms9p.onrender.com/uploads/${data2.coverImage}')`;
             }
             console.log(data2)
         
@@ -393,7 +393,7 @@ async function fetchFriendGameData(friendUsername) {
     try {
 
         // getting friends details
-        const res = await fetch(`http://localhost:5000/api/auth/userdetails`
+        const res = await fetch(`https://backend-ms9p.onrender.com/api/auth/userdetails`
         , {
             method: 'POST',
             headers: {
@@ -408,7 +408,7 @@ async function fetchFriendGameData(friendUsername) {
 
         
         // Fetch data for the "dogGame"
-        const response1 = await fetch('http://localhost:5000/api/game/top-scores', {
+        const response1 = await fetch('https://backend-ms9p.onrender.com/api/game/top-scores', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -426,7 +426,7 @@ async function fetchFriendGameData(friendUsername) {
         console.log('Friend dogGame data:', data1);
 
         // Fetch data for the "gorillaGame"
-        const response2 = await fetch('http://localhost:5000/api/game/top-scores', {
+        const response2 = await fetch('https://backend-ms9p.onrender.com/api/game/top-scores', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -445,7 +445,7 @@ async function fetchFriendGameData(friendUsername) {
 
         if(data1 !== undefined && data2 !== undefined && friendD !== undefined){
             
-            const coverImageUrl = friendD.coverImage ? `http://localhost:5000/uploads/${friendD.coverImage}` : './one.jpg';
+            const coverImageUrl = friendD.coverImage ? `https://backend-ms9p.onrender.com/uploads/${friendD.coverImage}` : './one.jpg';
             document.getElementById('friend-profile-img').src = coverImageUrl;
             
             document.getElementById('friend-name').innerText = data1.username; // Set friend's name
